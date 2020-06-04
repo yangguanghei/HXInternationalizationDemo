@@ -17,6 +17,8 @@
 @property (nonatomic,copy) void (^completion)(NSString *currentLanguage);
 
 - (NSString *)currentLanguage; //当前语言
+/// 移除存储的语言
++ (void)removeLanguage;
 - (NSString *)languageFormat:(NSString*)language;
 - (void)setUserlanguage:(NSString *)language;//设置当前语言
 

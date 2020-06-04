@@ -109,10 +109,14 @@
     NSString *language = [defaults objectForKey:UserLanguage];
     return language;
 }
++ (void)removeLanguage{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:UserLanguage];
+}
 
 //获取当前语种下的内容
 - (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)value {
-    if (!_bundle) {
+    if (_bundle == nil) {
         [self initUserLanguage];
     }
     

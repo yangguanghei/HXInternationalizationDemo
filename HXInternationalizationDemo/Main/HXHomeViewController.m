@@ -24,13 +24,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
-    
     //注册通知，用于接收改变语言的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeLanguage) name:ChangeLanguageNotificationName object:nil];
     
     [self setWorldImageViewAnimation];
 
     [self changeLanguage];
+    NSString * currentL = [[HXLanguageManager shareInstance] currentLanguage];
+    NSLog(@"%@", currentL);
 }
 
 //设置动画
@@ -71,12 +72,6 @@
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/huangxuan518"]];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:ChangeLanguageNotificationName];
 }
